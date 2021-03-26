@@ -18,7 +18,6 @@ import (
 	"net"
 	"sync"
 
-	"github.com/symbiont-jacob-romer/crunchy-proxy/config"
 	"github.com/symbiont-jacob-romer/crunchy-proxy/util/log"
 )
 
