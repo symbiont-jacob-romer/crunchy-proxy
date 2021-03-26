@@ -19,12 +19,12 @@ import (
 	"net"
 	"sync"
 
-	"github.com/crunchydata/crunchy-proxy/common"
-	"github.com/crunchydata/crunchy-proxy/config"
-	"github.com/crunchydata/crunchy-proxy/connect"
-	"github.com/crunchydata/crunchy-proxy/pool"
-	"github.com/crunchydata/crunchy-proxy/protocol"
-	"github.com/crunchydata/crunchy-proxy/util/log"
+	"github.com/symbiont-jacob-romer/crunchy-proxy/common"
+	"github.com/symbiont-jacob-romer/crunchy-proxy/config"
+	"github.com/symbiont-jacob-romer/crunchy-proxy/connect"
+	"github.com/symbiont-jacob-romer/crunchy-proxy/pool"
+	"github.com/symbiont-jacob-romer/crunchy-proxy/protocol"
+	"github.com/symbiont-jacob-romer/crunchy-proxy/util/log"
 )
 
 type Proxy struct {

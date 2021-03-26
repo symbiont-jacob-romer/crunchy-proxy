@@ -21,8 +21,8 @@ import (
 	"io/ioutil"
 	"net"
 
-	"github.com/crunchydata/crunchy-proxy/config"
-	"github.com/crunchydata/crunchy-proxy/util/log"
+	"github.com/symbiont-jacob-romer/crunchy-proxy/config"
+	"github.com/symbiont-jacob-romer/crunchy-proxy/util/log"
 )
 
 /* SSL constants. */

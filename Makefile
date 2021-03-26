@@ -64,7 +64,7 @@ run:
 
 docker:
 	docker build -t crunchy-proxy -f Dockerfile.centos7 .
-	docker tag crunchy-proxy crunchydata/crunchy-proxy:centos7-$(RELEASE_VERSION)
+	docker tag crunchy-proxy symbiont-jacob-romer/crunchy-proxy:centos7-$(RELEASE_VERSION)
 
 docker-push:
-	docker push crunchydata/crunchy-proxy:centos7-$(RELEASE_VERSION)
+	docker push symbiont-jacob-romer/crunchy-proxy:centos7-$(RELEASE_VERSION)

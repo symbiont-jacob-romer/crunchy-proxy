@@ -30,4 +30,4 @@ docker run -d --name=$CONTAINER_NAME \
 	-p 127.0.0.1:$PROXY_PORT:$PROXY_PORT \
 	-p 127.0.0.1:$PROXY_ADMIN_PORT:$PROXY_ADMIN_PORT \
 	-v $CONFIG:/config/config.yaml \
-	crunchydata/crunchy-proxy:$PROXY_TAG
+	symbiont-jacob-romer/crunchy-proxy:$PROXY_TAG

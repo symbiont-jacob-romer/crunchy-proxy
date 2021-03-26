@@ -17,8 +17,8 @@ package server
 import (
 	"net"
 
-	"github.com/crunchydata/crunchy-proxy/proxy"
-	"github.com/crunchydata/crunchy-proxy/util/log"
+	"github.com/symbiont-jacob-romer/crunchy-proxy/proxy"
+	"github.com/symbiont-jacob-romer/crunchy-proxy/util/log"
 )
 
 type ProxyServer struct {

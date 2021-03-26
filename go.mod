@@ -4,7 +4,7 @@ go 1.15
 
 require (
 	github.com/Sirupsen/logrus v1.0.1-0.20170608221441-85b1699d5056 // indirect
-	github.com/crunchydata/crunchy-proxy v0.0.0-20190407215550-64e9426fd4ad
+	github.com/symbiont-jacob-romer/crunchy-proxy v0.0.0-20190407215550-64e9426fd4ad
 	github.com/fsnotify/fsnotify v1.4.3-0.20170329110642-4da3e2cfbabc // indirect
 	github.com/golang/protobuf v0.0.0-20170613202457-4f95b0d3eab8
 	github.com/hashicorp/hcl v0.0.0-20170509225359-392dba7d905e // indirect

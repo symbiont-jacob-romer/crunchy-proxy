@@ -1,7 +1,7 @@
 github.com/Sirupsen/logrus v1.0.1-0.20170608221441-85b1699d5056 h1:xWyqhsPhozSyASe1w6xOLRXJOvt5tVIOmaM08b4FoGM=
 github.com/Sirupsen/logrus v1.0.1-0.20170608221441-85b1699d5056/go.mod h1:rmk17hk6i8ZSAJkSDa7nOxamrG+SP4P0mm+DAvExv4U=
-github.com/crunchydata/crunchy-proxy v0.0.0-20190407215550-64e9426fd4ad h1:JqftY3D0Jl2ahMtb+VjWLdf9/KsvdckPmaSzu7HxkfA=
-github.com/crunchydata/crunchy-proxy v0.0.0-20190407215550-64e9426fd4ad/go.mod h1:iFbD/5iTH1ozDIK4wpk8oG8Xmygxa5a6p6v6qmRBLtw=
+github.com/symbiont-jacob-romer/crunchy-proxy v0.0.0-20190407215550-64e9426fd4ad h1:JqftY3D0Jl2ahMtb+VjWLdf9/KsvdckPmaSzu7HxkfA=
+github.com/symbiont-jacob-romer/crunchy-proxy v0.0.0-20190407215550-64e9426fd4ad/go.mod h1:iFbD/5iTH1ozDIK4wpk8oG8Xmygxa5a6p6v6qmRBLtw=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
