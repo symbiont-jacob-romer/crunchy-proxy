@@ -22,7 +22,6 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/symbiont-jacob-romer/crunchy-proxy/config"
-	"github.com/symbiont-jacob-romer/crunchy-proxy/server"
 	"github.com/symbiont-jacob-romer/crunchy-proxy/util/log"
 )
 
@@ -71,9 +70,9 @@ func runStart(cmd *cobra.Command, args []string) error {
 
 	config.ReadConfig()
 
-	s := server.NewServer()
+	// s := server.NewServer()
 
-	s.Start()
+	// s.Start()
 
 	return nil
 }
