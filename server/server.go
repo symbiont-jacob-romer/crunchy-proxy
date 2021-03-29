@@ -39,9 +39,23 @@ func NewServer() *Server {
 	return s
 }
 
-func (s *Server) Start(proxyPort string) {
+func (s *Server) Start() {
+	proxyConfig := config.GetProxyConfig()
+	adminConfig := config.GetAdminConfig()
+
+	log.Info("Admin Server Starting...")
+	adminListener, err := net.Listen("tcp", adminConfig.HostPort)
+
+	if err != nil {
+		log.Fatal(err.Error())
+		return
+	}
+
+	s.waitGroup.Add(1)
+	go s.admin.Serve(adminListener)
+
 	log.Info("Proxy Server Starting...")
-	proxyListener, err := net.Listen("tcp", proxyPort)
+	proxyListener, err := net.Listen("tcp", proxyConfig.HostPort)
 	if err != nil {
 		log.Fatal(err.Error())
 		return
