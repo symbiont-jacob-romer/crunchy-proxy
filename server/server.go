@@ -15,9 +15,12 @@ limitations under the License.
 package server
 
 import (
+	"fmt"
 	"net"
 	"sync"
 
+	"github.com/symbiont-jacob-romer/crunchy-proxy/common"
+	"github.com/symbiont-jacob-romer/crunchy-proxy/config"
 	"github.com/symbiont-jacob-romer/crunchy-proxy/util/log"
 )
 
@@ -67,4 +70,37 @@ func (s *Server) Start() {
 	s.waitGroup.Wait()
 
 	log.Info("Server Exiting...")
+}
+
+func StartServer(host, port, user, pass, database, sslMode, ca, proxyPort string) {
+	log.SetLevel("debug")
+
+	serverConfig := config.ServerConfig{
+		Admin: config.AdminConfig{HostPort: "127.0.0.1:54340"},
+		Proxy: config.ProxyConfig{HostPort: fmt.Sprintf("127.0.0.1:%s", proxyPort)},
+	}
+	creds := common.Credentials{
+		Username: user,
+		Password: pass,
+		Database: database,
+		SSL: common.SSLConfig{
+			SSLMode:   sslMode,
+			SSLRootCA: ca,
+		},
+	}
+	nodes := map[string]common.Node{
+		"master": {
+			HostPort: fmt.Sprintf("%s:%s", host, port),
+		},
+	}
+
+	config.Set("Credentials", creds)
+	config.Set("Nodes", nodes)
+	config.Set("Server", serverConfig)
+	config.Set("HealthCheck", common.HealthCheckConfig{Delay: 10000})
+	config.SetConfig()
+	log.Infof("conf creds %#v", config.GetConfig())
+
+	s := NewServer()
+	s.Start()
 }

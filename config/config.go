@@ -144,3 +144,11 @@ func ReadConfig() {
 		log.Fatalf(err.Error())
 	}
 }
+
+func SetConfig() {
+	err := viper.Unmarshal(&c)
+
+	if err != nil {
+		log.Errorf("Could not set conf: %s", err)
+	}
+}
