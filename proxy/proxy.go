@@ -72,9 +72,10 @@ func (p *Proxy) setupPools() {
 			log.Infof("Connecting to node '%s' at %s...", name, node.HostPort)
 			connection, err := connect.Connect(node.HostPort)
 
-			username := config.GetString("credentials.username")
-			database := config.GetString("credentials.database")
-			options := config.GetStringMapString("credentials.options")
+			creds := config.GetCredentials()
+			username := creds.Username
+			database := creds.Database
+			options := creds.Options
 
 			startupMessage := protocol.CreateStartupMessage(username, database, options)
 
