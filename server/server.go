@@ -91,6 +91,7 @@ func StartServer(host, port, user, pass, database, sslMode, ca, proxyPort string
 	nodes := map[string]common.Node{
 		"master": {
 			HostPort: fmt.Sprintf("%s:%s", host, port),
+			Role: "master",
 		},
 	}
 
