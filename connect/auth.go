@@ -246,6 +246,8 @@ func ValidateClient(message []byte) bool {
 
 	creds := config.GetCredentials()
 
+	log.Infof("conf %s %s", creds.Username, creds.Database)
+
 	startup := protocol.NewMessageBuffer(message)
 
 	startup.Seek(8) // Seek past the message length and protocol version.
@@ -260,8 +262,11 @@ func ValidateClient(message []byte) bool {
 		switch param {
 		case "user":
 			clientUser, err = startup.ReadString()
+			log.Infof("client user %s", clientUser)
 		case "database":
 			clientDatabase, err = startup.ReadString()
+			log.Infof("client db %s", clientDatabase)
+		default:
 		}
 	}
 

@@ -25,7 +25,6 @@ import (
 )
 
 type Server struct {
-	admin     *AdminServer
 	proxy     *ProxyServer
 	waitGroup *sync.WaitGroup
 }
@@ -35,8 +34,6 @@ func NewServer() *Server {
 		waitGroup: &sync.WaitGroup{},
 	}
 
-	s.admin = NewAdminServer(s)
-
 	s.proxy = NewProxyServer(s)
 
 	return s
@@ -44,18 +41,6 @@ func NewServer() *Server {
 
 func (s *Server) Start() {
 	proxyConfig := config.GetProxyConfig()
-	adminConfig := config.GetAdminConfig()
-
-	log.Info("Admin Server Starting...")
-	adminListener, err := net.Listen("tcp", adminConfig.HostPort)
-
-	if err != nil {
-		log.Fatal(err.Error())
-		return
-	}
-
-	s.waitGroup.Add(1)
-	go s.admin.Serve(adminListener)
 
 	log.Info("Proxy Server Starting...")
 	proxyListener, err := net.Listen("tcp", proxyConfig.HostPort)
@@ -76,7 +61,6 @@ func StartServer(host, port, user, pass, database, sslMode, ca, proxyPort string
 	log.SetLevel("debug")
 
 	serverConfig := config.ServerConfig{
-		Admin: config.AdminConfig{HostPort: "127.0.0.1:54340"},
 		Proxy: config.ProxyConfig{HostPort: fmt.Sprintf("127.0.0.1:%s", proxyPort)},
 	}
 	creds := common.Credentials{

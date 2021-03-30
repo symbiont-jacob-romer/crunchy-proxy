@@ -1,23 +1,43 @@
-/*
-Copyright 2017 Crunchy Data Solutions, Inc.
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
 package main
 
 import (
-	"github.com/symbiont-jacob-romer/crunchy-proxy/cli"
+	"github.com/symbiont-jacob-romer/crunchy-proxy/common"
+	"github.com/symbiont-jacob-romer/crunchy-proxy/config"
+	"github.com/symbiont-jacob-romer/crunchy-proxy/server"
+	"github.com/symbiont-jacob-romer/crunchy-proxy/util/log"
 )
 
 func main() {
-	cli.Main()
+	log.SetLevel("info")
+
+	serverConfig := config.ServerConfig{
+		Admin: config.AdminConfig{HostPort: "127.0.0.1:5434"},
+		Proxy: config.ProxyConfig{HostPort: "127.0.0.1:5433"},
+	}
+	creds := common.Credentials{
+		Username: "txe",
+		Password: "password",
+		Database: "state_db",
+		SSL:      common.SSLConfig{
+			Enable: false,
+			SSLMode: "disable",
+		},
+	}
+	nodes := map[string]common.Node{
+		"master": {
+			HostPort: "127.0.0.1:5432",
+		},
+	}
+
+	config.Set("Credentials", creds)
+	config.Set("Nodes", nodes)
+	config.Set("Server", serverConfig)
+	config.Set("HealthCheck", common.HealthCheckConfig{
+		Delay: 10000,
+	})
+	config.SetConfig()
+	log.Infof("conf creds %#v", config.GetConfig())
+
+	s := server.NewServer()
+	s.Start()
 }
