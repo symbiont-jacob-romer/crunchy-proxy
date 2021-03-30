@@ -98,6 +98,7 @@ func StartServer(host, port, user, pass, database, sslMode, ca, proxyPort string
 	config.Set("Credentials", creds)
 	config.Set("Nodes", nodes)
 	config.Set("Server", serverConfig)
+	config.Set("Pool", config.PoolConfig{Capacity: 2})
 	config.Set("HealthCheck", common.HealthCheckConfig{Delay: 10000})
 	config.SetConfig()
 	log.Infof("conf creds %#v", config.GetConfig())
